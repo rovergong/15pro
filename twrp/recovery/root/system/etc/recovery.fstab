@@ -38,6 +38,10 @@ mi_ext                                                  /mnt/vendor/mi_ext     e
 /mnt/vendor/mi_ext                                      /mi_ext                erofs   ro,bind                                              wait,nofail
 vendor                                                  /vendor                ext4    ro,barrier=1,discard                                 wait,slotselect,avb,logical,first_stage_mount
 vendor                                                  /vendor                erofs   ro                                                   wait,slotselect,avb,logical,first_stage_mount
+vendor_dlkm                                             /vendor_dlkm           erofs   ro                                                   wait,slotselect,avb=vbmeta,logical,first_stage_mount
+vendor_dlkm                                             /vendor_dlkm           ext4    ro,barrier=1,discard                                 wait,slotselect,avb=vbmeta,logical,first_stage_mount
+system_dlkm                                             /system_dlkm           erofs   ro                                                   wait,slotselect,avb=vbmeta,logical,first_stage_mount
+system_dlkm                                             /system_dlkm           ext4   
 odm                                                     /odm                   ext4    ro,barrier=1,discard                                 wait,slotselect,avb,logical,first_stage_mount
 odm                                                     /odm                   erofs   ro                                                   wait,slotselect,avb,logical,first_stage_mount
 /dev/block/bootdevice/by-name/metadata                  /metadata              f2fs    noatime,nosuid,nodev,discard                         wait,check,formattable,wrappedkey,first_stage_mount
