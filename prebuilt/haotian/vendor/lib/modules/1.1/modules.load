@@ -506,3 +506,4 @@ ipclite.ko
 ipclite_test.ko
 msm_video.ko
 msm_kgsl.ko
+libprocinfo.so
