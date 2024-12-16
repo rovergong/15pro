@@ -1,37 +1,33 @@
-# Android fstab file.
-# The filesystem that contains the filesystem checker binary (typically /system) cannot
-# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+/system                ext4      system                                     flags=display=system;logical;slotselect;backup=1;flashimg=1
+/system                erofs     system                                     flags=display=system;logical;slotselect;backup=1;flashimg=1
+/system_ext            ext4      system_ext                                 flags=display=system_ext;logical;slotselect;backup=1;flashimg=1
+/system_ext            erofs     system_ext                                 flags=display=system_ext;logical;slotselect;backup=1;flashimg=1
+/product               ext4      product                                    flags=display=product;logical;slotselect;backup=1;flashimg=1
+/product               erofs     product                                    flags=display=product;logical;slotselect;backup=1;flashimg=1
+/mnt/vendor/mi_ext     ext4      mi_ext                                     flags=display=mi_ext;logical;slotselect;backup=1;flashimg=1
+/mnt/vendor/mi_ext     erofs     mi_ext                                     flags=display=mi_ext;logical;slotselect;backup=1;flashimg=1
+/mi_ext                ext4      /mnt/vendor/mi_ext                         flags=display=mi_ext;backup=1;flashimg=1
+/mi_ext                erofs     /mnt/vendor/mi_ext                         flags=display=mi_ext;backup=1;flashimg=1
+/vendor                ext4      vendor                                     flags=display=vendor;logical;slotselect;backup=1;flashimg=1
+/vendor                erofs     vendor                                     flags=display=vendor;logical;slotselect;backup=1;flashimg=1
+/odm                   ext4      odm                                        flags=display=odm;logical;slotselect;backup=1;flashimg=1
+/odm                   erofs     odm                                        flags=display=odm;logical;slotselect;backup=1;flashimg=1
+/metadata              f2fs      /dev/block/bootdevice/by-name/metadata     flags=display=metadata;backup=1;flashimg=1
+/data                  f2fs      /dev/block/bootdevice/by-name/userdata     flags=display=data;backup=1;flashimg=1
+/sdcard                vfat      /dev/block/mmcblk1p1                       flags=display=sdcard
+/boot                  emmc      /dev/block/bootdevice/by-name/boot         flags=display=boot;backup=1;flashimg=1
+/misc                  emmc      /dev/block/bootdevice/by-name/misc         flags=display=misc;backup=1;flashimg=1
+/cache                 ext4      /dev/block/bootdevice/by-name/rescue       flags=display=cache;backup=1;flashimg=1
+#SD cards
+/external_sd	vfat		/dev/block/mmcblk0p1	/dev/block/mmcblk0	flags=display="MicroSD Card 1";storage;wipeingui;removable
+/external_sd    vfat        /dev/block/mmcblk1p1	/dev/block/mmcblk1 	flags=display="MicroSD Card 2";storage;wipeingui;removable
+/external_sd	auto		/dev/block/mmcblk0p1	/dev/block/mmcblk0	flags=display="MicroSD Card 3";storage;wipeingui;removable
+/external_sd    auto        /dev/block/mmcblk1p1	/dev/block/mmcblk1 	flags=display="MicroSD Card 4";storage;wipeingui;removable
 
-# mount point          fstype  device                                        device2              flags
+#OTG
+/usb-otg	auto		/dev/block/sdf1	/dev/block/sdf		  flags=display="USB-OTG 1";backup=0
+/usb-otg    auto        /dev/block/sda1 /dev/block/sda        flags=display="USB OTG 2";backup=0
+/usb-otg    auto        /dev/block/sdg1 /dev/block/sdg        flags=display="USB-OTG 3";backup=0
+/usb_otg    auto        /dev/block/sdd1 /dev/block/sdd        flags=display="USB-OTG 5";backup=0
 
-/metadata              f2fs    /dev/block/bootdevice/by-name/metadata                             flags=display="Metadata";backup=1;wrappedkey
-/data                  f2fs    /dev/block/bootdevice/by-name/userdata                             flags=fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption,metadata_encryption=aes-256-xts:wrappedkey_v0
-/cache                 ext4    /dev/block/bootdevice/by-name/rescue                               flags=backup=1;wipeingui;wipeduringfactoryreset
-
-/cust                  erofs    /dev/block/bootdevice/by-name/cust                                flags=display="Cust";backup=1;flashimg=1
-
-# Boot
-/boot                  emmc    /dev/block/bootdevice/by-name/boot                                 flags=backup=1;slotselect;flashimg=1
-/init_boot             emmc    /dev/block/bootdevice/by-name/init_boot                            flags=backup=1;slotselect;flashimg=1
-/vendor_boot           emmc    /dev/block/bootdevice/by-name/vendor_boot                          flags=display="vendor_boot";slotselect;backup=1;flashimg=1
-/dtbo                  emmc    /dev/block/bootdevice/by-name/dtbo                                 flags=backup=1;slotselect;display="Dtbo";flashimg=1
-/recovery              emmc    /dev/block/bootdevice/by-name/recovery                             flags=backup=1;slotselect;flashimg=1
-/vbmeta                emmc    /dev/block/bootdevice/by-name/vbmeta                               flags=display="vbmeta";slotselect;backup=1;flashimg=1
-/vbmeta_system         emmc    /dev/block/bootdevice/by-name/vbmeta_system                        flags=display="vbmeta_system";slotselect;backup=1;flashimg=1
-/logo                  emmc    /dev/block/bootdevice/by-name/logo                                 flags=display="logo";backup=1;flashimg=1
-/misc                  emmc    /dev/block/bootdevice/by-name/misc                                 flags=display="misc";backup=1;flashimg=1
-
-# Persistent Firmware & Properties
-/persist               ext4    /dev/block/bootdevice/by-name/persist                              flags=display="Persist"
-/persist_image         emmc    /dev/block/bootdevice/by-name/persist                              flags=display="Persist";flashimg=1
-
-# Firmware partitions
-/bluetooth             vfat    /dev/block/bootdevice/by-name/bluetooth                            flags=display="bluetooth";slotselect;fsflags="ro,shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0 wait"
-/bluetooth_image       emmc    /dev/block/bootdevice/by-name/bluetooth                            flags=display="bluetooth";slotselect;backup=1;flashimg=1
-/dsp                   vfat    /dev/block/bootdevice/by-name/dsp                                  flags=display="dsp";slotselect
-/dsp_image             emmc    /dev/block/bootdevice/by-name/dsp                                  flags=display="dsp";slotselect;backup=1;flashimg=1
-/modem                 vfat    /dev/block/bootdevice/by-name/modem                                flags=display="Modem";slotselect;fsflags="ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0 wait"
-/modem_img             emmc    /dev/block/bootdevice/by-name/modem                                flags=backup=1;display="Modem";slotselect;flashimg=1
-
-# Removable storage
-/usb_otg               auto    /dev/block/sdg1                            /dev/block/sdg          flags=fsflags=utf8;display="USB-OTG";storage;wipeingui;removable
+# Online TWRP Builder By Team Hovatek
