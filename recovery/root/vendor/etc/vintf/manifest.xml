@@ -17,6 +17,18 @@
         <fqname>@7.0::IEffectsFactory/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.boot</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.1::IBootControl/default</fqname>
+        <fqname>@1.2::IBootControl/default</fqname>
+        <fqname>@2.1::IHealth/default</fqname>
+    </hal>
+    <hal format="aidl">
+         <name>android.hardware.secure_element</name>
+         <fqname>ISecureElement/SIM1</fqname>
+         <fqname>ISecureElement/SIM2</fqname>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.bluetooth</name>
         <transport>hwbinder</transport>
         <fqname>@1.1::IBluetoothHci/default</fqname>
@@ -133,7 +145,13 @@
     </hal>
     <hal format="hidl">
         <name>vendor.qti.sla.service</name>
-        <fqname>ISlaAIDLService/default</fqname>
+        <transport>hwbinder</transport>
+<fqname>@1.0::ISlaService/default</fqname>
+    </hal>
+<hal format="hidl">
+        <name>android.hardware.health</name>
+        <transport>hwbinder</transport>
+        <fqname>@2.1::IHealth/default</fqname>
     </hal>
     <hal format="aidl">
         <name>vendor.xiaomi.aidl.minet</name>
