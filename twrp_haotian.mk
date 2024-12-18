@@ -16,7 +16,7 @@ PRODUCT_RELEASE_NAME := haotian
 PRODUCT_DEVICE := haotian
 PRODUCT_NAME := twrp_haotian
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := 2410DPN6CC
+PRODUCT_MODEL := xiaomi 15 pro
 PRODUCT_MANUFACTURER := Xiaomi
 
 # Assert
