@@ -12,7 +12,7 @@ TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT := kyro
 
 # Power
 ENABLE_CPUSETS := true
@@ -143,7 +143,7 @@ TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
 TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
-TW_LOAD_VENDOR_MODULES := "qcom_glink.ko qcom_glink_smem.ko qcom_smd.ko rproc_qcom_common.ko qmi_helpers.ko pdr_interface.ko q6_pdr_dlkm.ko q6_pdr_dlkm.ko qcom_ramdump.ko qcom_sysmon.ko qcom_q6v5.ko qcom_pil_info.ko qcom_q6v5_pas.ko q6_notifier_dlkm.ko q6_notifier_dlkm.ko snd_event_dlkm.ko snd_event_dlkm.ko gpr_dlkm.ko gpr_dlkm.ko spf_core_dlkm.ko adsp_loader_dlkm.ko adsp_loader_dlkm.ko gh_mem_notifier.ko panel_event_notifier.ko xiaomi_touch.ko xiaomi_touch.ko gh_irq_lend.ko synaptics_tcm2.ko"
+TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko synaptics_tcm2.ko qti_battery_charger.ko"
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone35/temp"
 TW_BATTERY_SYSFS_WAIT_SECONDS := 6
 TW_BACKUP_EXCLUSIONS := /data/fonts
