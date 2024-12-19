@@ -80,7 +80,7 @@ on late-fs
     # cal-file directory
     mkdir /mnt/vendor/persist/haptics 0755 system system
 
-service vibratorfeature-hal-service /vendor/bin/hw/vendor.xiaomi.hardware.vibratorfeature.service
+service vibratorfeature-hal-service /odm/bin/hw/vendor.xiaomi.hardware.vibratorfeature.service
     class hal
     user system
     group system input audio
@@ -100,3 +100,13 @@ on property:sys.boot_completed=1
     setprop vendor.aihaptic.warn.transient_sharpness 56
     setprop vendor.aihaptic.warn.continuous_intensity 65
     setprop vendor.aihaptic.warn.continuous_sharpness 56
+
+on boot
+    start vibratorfeature-hal-service
+
+service vibratorfeature-hal-service /vendor/bin/hw/vendor.xiaomi.hardware.vibratorfeature.service
+    class hal
+    user system
+    group system input
+    onrestart restart vibratorfeature
+    seclabel u:r:recovery:s0
