@@ -21,7 +21,7 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 
 PRODUCT_PACKAGES += \
     bootctrl.xiaomi_sm8550.recovery \
-    android.hardware.boot@1.2-impl-qti.recovery \ 
+    android.hardware.boot@1.2-impl-qti.recovery \
     android.hardware.health@2.0-impl-2.1.recovery
 
 # SHIPPING API
